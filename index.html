@@ -2,12 +2,22 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Tabla en Vivo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tabla Dinámica Vertical de Países y Personas</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>🌍 Tabla de Personas por País</h1>
-  <div id="table-container"></div>
+  <h1>Tabla Dinámica Vertical - Países y Personas</h1>
+
+  <div id="add-country-section">
+    <h2>Agregar País</h2>
+    <input type="text" id="country-name" placeholder="Nombre del país" />
+    <input type="file" id="country-flag" accept="image/*" />
+    <button id="add-country-btn">Agregar País</button>
+  </div>
+
+  <div id="countries-container"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
