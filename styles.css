@@ -100,9 +100,6 @@ button:hover {
   padding-bottom: 10px;
   align-items: stretch;
 }
-.personas::-webkit-scrollbar {
-  width: 8px;
-}
 
 .personas::-webkit-scrollbar-thumb {
   background-color: #ce93d8;
