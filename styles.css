@@ -90,22 +90,23 @@ button:hover {
 }
 
 .persona {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 120px; /* un poco más que el ancho de la imagen (100px + padding) */
   padding: 10px;
   margin: 10px;
   border: 2px solid #ddd;
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  width: 180px; /* un poco más que el ancho de la imagen + padding */
+  max-width: 180px;
 }
 
 .persona img {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 8px;
