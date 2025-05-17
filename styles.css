@@ -126,3 +126,10 @@ button:hover {
   color: red;
   font-size: 18px;
 }
+.donador-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+  margin: 10px 0;
+}
