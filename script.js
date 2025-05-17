@@ -1,117 +1,71 @@
-const countries = {};
+const paises = {};
 
-function addCountry() {
-  const name = document.getElementById("countryName").value.trim();
-  const flagUrl = document.getElementById("countryFlag").value.trim();
+function agregarPais() {
+  const nombre = document.getElementById("pais").value.trim();
+  const url = document.getElementById("bandera").value.trim();
 
-  if (!name || !flagUrl || countries[name]) return;
+  if (!nombre || !url || paises[nombre]) return;
 
-  countries[name] = [];
+  paises[nombre] = [];
 
-  const container = document.getElementById("countriesContainer");
+  const contenedor = document.createElement("div");
+  contenedor.className = "pais";
+  contenedor.id = `pais-${nombre}`;
 
-  const column = document.createElement("div");
-  column.className = "country-column";
-  column.id = `col-${name}`;
+  const encabezado = document.createElement("div");
+  encabezado.className = "pais-header";
+  encabezado.innerHTML = `<img src="${url}" alt="${nombre}"><strong>${nombre}</strong>`;
 
-  const header = document.createElement("div");
-  header.className = "country-header";
+  const personas = document.createElement("div");
+  personas.className = "personas";
 
-  const img = document.createElement("img");
-  img.src = flagUrl;
-  img.alt = name;
+  const form = document.querySelector("#form-persona").content.cloneNode(true);
+  const inputNombre = form.querySelector(".nombre");
+  const inputFoto = form.querySelector(".foto");
+  const inputDonador = form.querySelector(".donador");
+  const btnAgregar = form.querySelector(".agregar");
 
-  const title = document.createElement("strong");
-  title.textContent = name;
+  btnAgregar.onclick = () => {
+    const nombrePersona = inputNombre.value.trim();
+    const fotoPersona = inputFoto.value.trim();
+    const esDonador = inputDonador.checked;
 
-  const addBtn = document.createElement("button");
-  addBtn.textContent = "➕";
-  addBtn.onclick = () => addPersonPrompt(name);
+    if (!nombrePersona || !fotoPersona) return;
 
-  header.appendChild(img);
-  header.appendChild(title);
-  header.appendChild(addBtn);
-  column.appendChild(header);
-
-  const list = document.createElement("div");
-  list.className = "person-list";
-  column.appendChild(list);
-
-  container.appendChild(column);
-
-  document.getElementById("countryName").value = "";
-  document.getElementById("countryFlag").value = "";
-}
-
-function addPersonPrompt(country) {
-  const name = prompt("Nombre completo:");
-  if (!name) return;
-  const img = prompt("URL de imagen de perfil:");
-  if (!img) return;
-  const isDonor = confirm("¿Es donador?");
-
-  countries[country].push({ name, img, isDonor });
-  countries[country].sort((a, b) => a.name.localeCompare(b.name));
-
-  renderPeople(country);
-}
-
-function renderPeople(country) {
-  const list = document.querySelector(`#col-${country} .person-list`);
-  list.innerHTML = "";
-
-  countries[country].forEach((person, index) => {
-    const card = document.createElement("div");
-    card.className = "person-card";
-
-    const img = document.createElement("img");
-    img.src = person.img;
-
-    const name = document.createElement("span");
-    name.className = "name";
-    name.textContent = person.name;
-
-    const donor = person.isDonor
-      ? `<span class="donor">Donador</span>`
-      : "";
-
-    const controls = document.createElement("div");
-    controls.className = "controls";
-
-    const edit = document.createElement("button");
-    edit.textContent = "✏️";
-    edit.onclick = () => editPerson(country, index);
-
-    const del = document.createElement("button");
-    del.textContent = "🗑️";
-    del.onclick = () => {
-      countries[country].splice(index, 1);
-      renderPeople(country);
+    const persona = {
+      nombre: nombrePersona,
+      foto: fotoPersona,
+      donador: esDonador
     };
 
-    controls.appendChild(edit);
-    controls.appendChild(del);
+    paises[nombre].push(persona);
+    paises[nombre].sort((a, b) => a.nombre.localeCompare(b.nombre));
+    renderPersonas(nombre, personas);
+    
+    inputNombre.value = "";
+    inputFoto.value = "";
+    inputDonador.checked = false;
+  };
 
-    const wrapper = document.createElement("div");
-    wrapper.appendChild(name);
-    wrapper.innerHTML += donor;
+  contenedor.appendChild(encabezado);
+  contenedor.appendChild(personas);
+  contenedor.appendChild(form);
+  document.getElementById("paises-container").appendChild(contenedor);
 
-    card.appendChild(img);
-    card.appendChild(wrapper);
-    card.appendChild(controls);
-
-    list.appendChild(card);
-  });
+  document.getElementById("pais").value = "";
+  document.getElementById("bandera").value = "";
 }
 
-function editPerson(country, index) {
-  const current = countries[country][index];
-  const name = prompt("Nuevo nombre:", current.name);
-  if (!name) return;
-  const img = prompt("Nueva URL de imagen:", current.img);
-  if (!img) return;
-  const isDonor = confirm("¿Es donador?");
-  countries[country][index] = { name, img, isDonor };
-  countries[country].sort((a, b) => a.name.localeCompare(b.name));
-  renderPeople(country);
+function renderPersonas(nombrePais, contenedor) {
+  contenedor.innerHTML = "";
+  paises[nombrePais].forEach(persona => {
+    const div = document.createElement("div");
+    div.className = "persona";
+    div.innerHTML = `
+      <img src="${persona.foto}" alt="${persona.nombre}" />
+      <span>${persona.nombre}</span>
+      ${persona.donador ? '<span class="donador">❤️</span>' : ''}
+    `;
+    contenedor.appendChild(div);
+  });
 }
