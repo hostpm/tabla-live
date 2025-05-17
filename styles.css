@@ -67,9 +67,9 @@ button:hover {
 
 
 .persona span {
+  flex: 1;
   font-family: 'EleganciaRomantica', sans-serif;
   font-weight: bold;
-  word-break: break-word;
   font-size: 1.1rem;
   color: #e60073;
 }
@@ -114,22 +114,23 @@ button:hover {
 .persona {
   background: #f0f0f0;
   border: 2px solid transparent;
-  border-radius: 10px;
-  padding: 10px;
+  border-radius: 25px; /* más redondeado */
+  padding: 10px 15px;
   display: flex;
   align-items: center;
+  justify-content: space-between; /* nombre a la izquierda, imagen a la derecha */
   gap: 15px;
   width: 100%;
   text-align: left;
-  margin-bottom: 10px;
 }
 
 .persona img {
-  width: 80px;
-  height: 80px;
-  border-radius: 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* redondear la imagen */
   object-fit: cover;
 }
+
 
 
 .persona.donador {
