@@ -9,8 +9,8 @@ body {
 
 #paises-container {
   display: flex;
-  flex-wrap: nowrap;      /* ✅ Todo en una sola línea */
-  overflow-x: auto;       /* ✅ Barra horizontal */
+  flex-wrap: nowrap;
+  overflow-x: auto; /* barra deslizable para países */
   gap: 20px;
   padding: 20px;
 }
@@ -85,10 +85,10 @@ button:hover {
 
 .personas {
   display: flex;
-  flex-direction: row;
+  flex-direction: column; /* para que las personas se apilen verticalmente */
   gap: 10px;
   width: 100%;
-  overflow-x: auto;
+  overflow-x: visible; /* NO scroll horizontal */
   padding-bottom: 10px;
   align-items: flex-start;
 }
