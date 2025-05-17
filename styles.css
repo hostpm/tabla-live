@@ -46,7 +46,6 @@ button:hover {
 }
 
 .pais {
-  /* Mantén esto para la tabla */
   background: white;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -55,10 +54,10 @@ button:hover {
   word-wrap: break-word;
   overflow-wrap: break-word;
 
-  /* Agrega para que alinee bien */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* centra el contenido dentro del país */
+  /* NUEVO: sistema de grilla para personas */
+  display: grid;
+  grid-template-columns: 1fr; /* una sola columna */
+  gap: 10px;
 }
 
 .persona span {
@@ -93,16 +92,15 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   padding: 5px;
   border-radius: 8px;
   background: #f9f9f9;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-
-  /* Cambia esta línea: */
-  width: 100%; /* para que ocupe todo el ancho del contenedor pais */
-  max-width: 230px; /* máximo ancho para que no crezca demasiado */
-  box-sizing: border-box; /* incluye padding dentro del ancho */
+  
+  width: auto;          /* 👈 ya no fuerza ancho */
+  max-width: 100%;      /* que se adapte al contenedor */
+  box-sizing: border-box;
 }
 
 .persona img {
