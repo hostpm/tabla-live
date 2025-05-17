@@ -69,16 +69,24 @@ button:hover {
 .pais-header {
   display: flex;
   align-items: center;
+  justify-content: center; /* para centrar todo el contenido horizontalmente */
   gap: 10px;
   margin-bottom: 10px;
-  justify-content: flex-start; /* alinea a la izquierda */
   width: 100%;
+  font-size: 1.1rem;
 }
 
 .pais-header img {
   width: 30px;
   height: 20px;
   object-fit: cover;
+}
+
+.contador-personas {
+  font-weight: normal;
+  color: #666;
+  margin-left: 5px;
+  font-size: 0.9rem;
 }
 
 .personas {
