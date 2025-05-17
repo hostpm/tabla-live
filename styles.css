@@ -85,10 +85,12 @@ button:hover {
 
 .personas {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 10px;
   width: 100%;
-  align-items: flex-start; /* alinea las personas a la izquierda */
+  overflow-x: auto;
+  padding-bottom: 10px;
+  align-items: flex-start;
 }
 
 .persona {
@@ -98,9 +100,10 @@ button:hover {
   padding: 10px;
   margin-bottom: 10px;
   display: flex;
-  flex-direction: column;   /* ✅ Ahora se apilan en columna */
-  align-items: center;      /* ✅ Centra el contenido */
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  width: 150px; /* ancho fijo */
 }
 
 .persona img {
