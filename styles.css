@@ -132,10 +132,12 @@ button:hover {
 }
 /* Estilo del ícono de donador */
 .donador-icono {
-  color: #e74c3c; /* rojo */
-  font-size: 20px;
-  margin-left: 6px;
-  vertical-align: middle;
+  background-color: purple;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 5px;
+  font-size: 0.9em;
 }
 .donador {
   color: red;
