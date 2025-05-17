@@ -93,14 +93,23 @@ font-family: 'EleganciaRomantica', sans-serif;
 }
 
 .personas {
+  max-height: 300px;  /* altura fija máxima */
+  overflow-y: auto;   /* barra vertical solo si es necesario */
   display: flex;
   flex-direction: column;
   gap: 10px;
   width: 100%;
   padding-bottom: 10px;
-  align-items: stretch; /* ✅ Para que .persona se estire al ancho disponible */
+  align-items: stretch;
+}
+.personas::-webkit-scrollbar {
+  width: 8px;
 }
 
+.personas::-webkit-scrollbar-thumb {
+  background-color: #ce93d8;
+  border-radius: 4px;
+}
 .persona {
   background: #f0f0f0;
   border: 2px solid transparent;
