@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'EleganciaRomantica';
+  src: url('fonts/EleganciaRomantica.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
