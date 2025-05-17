@@ -39,11 +39,13 @@ button:hover {
 
 .paises {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap; /* no permite que se bajen a la siguiente línea */
+  overflow-x: auto;  /* scroll horizontal si no caben */
   padding: 20px;
   gap: 20px;
+  justify-content: flex-start; /* alinea los países a la izquierda */
 }
+
 
 .pais {
   background: white;
@@ -51,13 +53,9 @@ button:hover {
   border-radius: 10px;
   padding: 10px;
   width: 250px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-
-  /* NUEVO: sistema de grilla para personas */
-  display: grid;
-  grid-template-columns: 1fr; /* una sola columna */
-  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* alinea contenido a la izquierda */
 }
 
 .persona span {
@@ -71,9 +69,10 @@ button:hover {
 .pais-header {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
   margin-bottom: 10px;
+  justify-content: flex-start; /* alinea a la izquierda */
+  width: 100%;
 }
 
 .pais-header img {
@@ -86,22 +85,22 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-items: center; /* ⬅️ CENTRA las tarjetas de persona */
+  width: 100%;
+  align-items: flex-start; /* alinea las personas a la izquierda */
 }
 
 .persona {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* centra el contenido dentro de la tarjeta persona */
   justify-content: center;
   padding: 10px;
-  margin: 10px;
+  margin: 0 auto; /* centra horizontalmente la tarjeta dentro de personas */
   border: 2px solid #ddd;
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  width: 180px; /* un poco más que el ancho de la imagen + padding */
-  max-width: 180px;
+  width: 170px;
 }
 
 .persona img {
