@@ -93,34 +93,27 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 5px;
-  padding: 5px;
-  border-radius: 8px;
-  background: #f9f9f9;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  
-  width: auto;          /* 👈 ya no fuerza ancho */
-  max-width: 100%;      /* que se adapte al contenedor */
-  box-sizing: border-box;
+  justify-content: center;
+  width: 160px; /* ajusta según el tamaño deseado */
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .persona img {
-  width: 80px; /* o el tamaño que desees */
-  height: 80px;
-  border-radius: 50%; /* opcional, para que sea redonda */
-  object-fit: cover; /* para que no se deforme */
-  margin-bottom: 8px; /* espaciado opcional */
+  width: 100px; /* más grande */
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
 }
 
 .persona span {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16px;
-  font-weight: 600;
   text-align: center;
-  color: #333;
-  max-width: 160px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  font-weight: bold;
 }
 
 .persona.donador {
