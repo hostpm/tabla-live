@@ -7,6 +7,10 @@ body {
   text-align: center;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 #paises-container {
   display: flex;
   flex-wrap: nowrap;
@@ -57,11 +61,10 @@ button:hover {
 }
 
 .persona span {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  text-align: left;
-  display: inline-block;
-  max-width: 170px; /* limita ancho para evitar que crezca mucho */
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  word-break: break-word;
 }
 
 .pais-header {
@@ -85,12 +88,11 @@ button:hover {
 
 .personas {
   display: flex;
-  flex-direction: column; /* para que las personas se apilen verticalmente */
+  flex-direction: column;
   gap: 10px;
   width: 100%;
-  overflow-x: visible; /* NO scroll horizontal */
   padding-bottom: 10px;
-  align-items: flex-start;
+  align-items: stretch; /* ✅ Para que .persona se estire al ancho disponible */
 }
 
 .persona {
@@ -114,10 +116,6 @@ button:hover {
   margin-bottom: 8px;
 }
 
-.persona span {
-  text-align: center;
-  font-weight: bold;
-}
 
 .persona.donador {
   background: #f3e5f5; /* morado claro */
