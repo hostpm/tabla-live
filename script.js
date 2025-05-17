@@ -64,7 +64,7 @@ function renderPersonas(nombrePais, contenedor) {
   contenedor.innerHTML = "";
   paises[nombrePais].forEach(persona => {
     const div = document.createElement("div");
-    div.className = "persona";
+    div.className = "persona" + (persona.donador ? " donador" : "");
     div.innerHTML = `
       <img src="${persona.foto}" alt="${persona.nombre}" />
       <span>${persona.nombre} ${persona.donador ? '<span class="donador">❤️</span>' : ''}</span>
