@@ -67,10 +67,11 @@ function renderPersonas(nombrePais, contenedor) {
     div.className = "persona" + (persona.donador ? " donador" : "");
     div.innerHTML = `
       <img src="${persona.foto}" alt="${persona.nombre}" />
-      <span>${persona.nombre} ${persona.donador ? '<span class="donador-icono">❤️</span>' : ''}</span>
+      <span>${persona.nombre} ${persona.donador ? '❤️' : ''}</span>
     `;
     contenedor.appendChild(div);
   });
+
   // Actualizar contador
   const paisDiv = document.getElementById(`pais-${nombrePais}`);
   const contador = paisDiv.querySelector(".contador-personas");
