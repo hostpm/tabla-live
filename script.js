@@ -121,7 +121,7 @@ function render() {
       const name = inputName.value.trim();
       const donor = inputDonorCheckbox.checked;
       const file = inputPhoto.files[0];
-      if (!name || !file) return alert("Por favor completa todos los campos");
+      if (!name || !file) return alert("Por favor completa los campos");
 
       // Leer imagen y guardar
       const reader = new FileReader();
