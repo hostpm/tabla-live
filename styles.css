@@ -9,9 +9,10 @@ body {
 
 #paises-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;      /* ✅ Todo en una sola línea */
+  overflow-x: auto;       /* ✅ Barra horizontal */
   gap: 20px;
+  padding: 20px;
 }
 
 
@@ -43,15 +44,6 @@ button {
 
 button:hover {
   background-color: #e655a1;
-}
-
-.paises {
-  display: flex;
-  flex-wrap: nowrap; /* no permite que se bajen a la siguiente línea */
-  overflow-x: auto;  /* scroll horizontal si no caben */
-  padding: 20px;
-  gap: 20px;
-  justify-content: flex-start; /* alinea los países a la izquierda */
 }
 
 
@@ -106,8 +98,9 @@ button:hover {
   padding: 10px;
   margin-bottom: 10px;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;   /* ✅ Ahora se apilan en columna */
+  align-items: center;      /* ✅ Centra el contenido */
+  text-align: center;
 }
 
 .persona img {
