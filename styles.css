@@ -1,8 +1,6 @@
 @font-face {
   font-family: 'EleganciaRomantica';
   src: url('fonts/EleganciaRomantica.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
 
 body {
@@ -68,7 +66,7 @@ button:hover {
 }
 
 .persona span {
-  font-family: 'EleganciaRomantica', cursive;
+font-family: 'EleganciaRomantica', sans-serif;
   display: block;
   text-align: center;
   font-weight: bold;
