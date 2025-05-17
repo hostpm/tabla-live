@@ -2,19 +2,32 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tabla por Países</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mural del Mundo - Gissel.line</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1>Agregar País</h1>
-  <div class="add-country">
-    <input type="text" id="countryName" placeholder="Nombre del país" />
-    <input type="text" id="countryFlag" placeholder="URL de bandera" />
-    <button onclick="addCountry()">Agregar País</button>
-  </div>
+  <h1>Mural del Mundo - Gissel.line</h1>
 
-  <div id="countriesContainer" class="countries-container"></div>
+  <section class="form-container">
+    <h2>Agregar País</h2>
+    <input type="text" id="pais" placeholder="Nombre del país" />
+    <input type="text" id="bandera" placeholder="URL de la bandera" />
+    <button onclick="agregarPais()">Agregar País</button>
+  </section>
+
+  <div id="paises-container" class="paises"></div>
+
+  <template id="form-persona">
+    <div class="agregar-persona">
+      <input type="text" placeholder="Nombre" class="nombre" />
+      <input type="text" placeholder="URL Foto de Perfil" class="foto" />
+      <label>
+        <input type="checkbox" class="donador" /> Donador
+      </label>
+      <button class="agregar">Agregar</button>
+    </div>
+  </template>
 
   <script src="script.js"></script>
 </body>
