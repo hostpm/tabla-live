@@ -63,8 +63,7 @@ function renderPersonas(nombrePais, contenedor) {
     div.className = "persona";
     div.innerHTML = `
       <img src="${persona.foto}" alt="${persona.nombre}" />
-      <span>${persona.nombre}</span>
-      ${persona.donador ? '<span class="donador">❤️</span>' : ''}
+      <span>${persona.nombre} ${persona.donador ? '<span class="donador">❤️</span>' : ''}</span>
     `;
     contenedor.appendChild(div);
   });
