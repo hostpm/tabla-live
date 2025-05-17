@@ -2,21 +2,19 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tabla Dinámica Vertical de Países y Personas</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tabla por Países</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Tabla Dinámica - Países y Personas</h1>
-
-  <div id="add-country-section">
-    <h2>Agregar País</h2>
-    <input type="text" id="country-name" placeholder="Nombre del país" />
-    <input type="file" id="country-flag" accept="image/*" />
-    <button id="add-country-btn">Agregar País</button>
+  <h1>Agregar País</h1>
+  <div class="add-country">
+    <input type="text" id="countryName" placeholder="Nombre del país" />
+    <input type="text" id="countryFlag" placeholder="URL de bandera" />
+    <button onclick="addCountry()">Agregar País</button>
   </div>
 
-  <div id="countries-container"></div>
+  <div id="countriesContainer" class="countries-container"></div>
 
   <script src="script.js"></script>
 </body>
