@@ -105,12 +105,11 @@ button:hover {
 }
 
 .persona img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 6px;
-  border: 2px solid #ddd;
+  width: 80px; /* o el tamaño que desees */
+  height: 80px;
+  border-radius: 50%; /* opcional, para que sea redonda */
+  object-fit: cover; /* para que no se deforme */
+  margin-bottom: 8px; /* espaciado opcional */
 }
 
 .persona span {
