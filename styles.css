@@ -93,8 +93,6 @@ button:hover {
 }
 
 .personas {
-  max-height: 300px;  /* altura fija máxima */
-  overflow-y: auto;   /* barra vertical solo si es necesario */
   display: flex;
   flex-direction: column;
   gap: 10px;
