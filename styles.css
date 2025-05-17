@@ -65,11 +65,13 @@ button:hover {
   background-color: #f9f9f9;
 }
 
+
 .persona span {
   font-family: 'EleganciaRomantica', sans-serif;
   font-weight: bold;
   word-break: break-word;
   font-size: 1.1rem;
+  color: #e60073;
 }
 
 .pais-header {
@@ -119,6 +121,7 @@ button:hover {
   gap: 15px;
   width: 100%;
   text-align: left;
+  margin-bottom: 10px;
 }
 
 .persona img {
@@ -127,7 +130,6 @@ button:hover {
   border-radius: 10px;
   object-fit: cover;
 }
-
 
 
 .persona.donador {
