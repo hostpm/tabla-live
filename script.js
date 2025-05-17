@@ -1,171 +1,117 @@
-// Estructura de datos en localStorage: { countries: [{name, flagDataUrl, persons: [{name, photoDataUrl, donor}]}] }
+const countries = {};
 
-const countriesContainer = document.getElementById("countries-container");
-const addCountryBtn = document.getElementById("add-country-btn");
-const countryNameInput = document.getElementById("country-name");
-const countryFlagInput = document.getElementById("country-flag");
+function addCountry() {
+  const name = document.getElementById("countryName").value.trim();
+  const flagUrl = document.getElementById("countryFlag").value.trim();
 
-let data = { countries: [] };
+  if (!name || !flagUrl || countries[name]) return;
 
-function saveData() {
-  localStorage.setItem("liveTableData", JSON.stringify(data));
+  countries[name] = [];
+
+  const container = document.getElementById("countriesContainer");
+
+  const column = document.createElement("div");
+  column.className = "country-column";
+  column.id = `col-${name}`;
+
+  const header = document.createElement("div");
+  header.className = "country-header";
+
+  const img = document.createElement("img");
+  img.src = flagUrl;
+  img.alt = name;
+
+  const title = document.createElement("strong");
+  title.textContent = name;
+
+  const addBtn = document.createElement("button");
+  addBtn.textContent = "➕";
+  addBtn.onclick = () => addPersonPrompt(name);
+
+  header.appendChild(img);
+  header.appendChild(title);
+  header.appendChild(addBtn);
+  column.appendChild(header);
+
+  const list = document.createElement("div");
+  list.className = "person-list";
+  column.appendChild(list);
+
+  container.appendChild(column);
+
+  document.getElementById("countryName").value = "";
+  document.getElementById("countryFlag").value = "";
 }
 
-function loadData() {
-  const saved = localStorage.getItem("liveTableData");
-  if (saved) {
-    data = JSON.parse(saved);
-  }
+function addPersonPrompt(country) {
+  const name = prompt("Nombre completo:");
+  if (!name) return;
+  const img = prompt("URL de imagen de perfil:");
+  if (!img) return;
+  const isDonor = confirm("¿Es donador?");
+
+  countries[country].push({ name, img, isDonor });
+  countries[country].sort((a, b) => a.name.localeCompare(b.name));
+
+  renderPeople(country);
 }
 
-// Helpers para crear elementos
-function createElement(tag, options = {}, ...children) {
-  const el = document.createElement(tag);
-  for (const [key, val] of Object.entries(options)) {
-    if (key === "className") el.className = val;
-    else if (key === "innerHTML") el.innerHTML = val;
-    else if (key === "src") el.src = val;
-    else if (key === "onclick") el.onclick = val;
-    else if (key === "type") el.type = val;
-    else if (key === "checked") el.checked = val;
-    else el.setAttribute(key, val);
-  }
-  for (const child of children) {
-    if (child) el.appendChild(child);
-  }
-  return el;
-}
+function renderPeople(country) {
+  const list = document.querySelector(`#col-${country} .person-list`);
+  list.innerHTML = "";
 
-// Ordena personas alfabeticamente por nombre
-function sortPersons(persons) {
-  return persons.sort((a,b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
-}
+  countries[country].forEach((person, index) => {
+    const card = document.createElement("div");
+    card.className = "person-card";
 
-function render() {
-  countriesContainer.innerHTML = "";
+    const img = document.createElement("img");
+    img.src = person.img;
 
-  data.countries.forEach((country, countryIndex) => {
-    // Crear columna país
-    const col = createElement("div", {className: "country-column"});
+    const name = document.createElement("span");
+    name.className = "name";
+    name.textContent = person.name;
 
-    // Header con bandera y nombre
-    const flagImg = createElement("img", {src: country.flagDataUrl || "", alt: country.name + " bandera"});
-    const header = createElement("div", {className: "country-header"}, flagImg, createElement("div", {innerHTML: country.name}));
+    const donor = person.isDonor
+      ? `<span class="donor">Donador</span>`
+      : "";
 
-    col.appendChild(header);
+    const controls = document.createElement("div");
+    controls.className = "controls";
 
-    // Lista personas
-    const personList = createElement("div", {className: "person-list"});
-    const sortedPersons = sortPersons(country.persons);
+    const edit = document.createElement("button");
+    edit.textContent = "✏️";
+    edit.onclick = () => editPerson(country, index);
 
-    sortedPersons.forEach((person, personIndex) => {
-      const photo = createElement("img", {className:"person-photo", src: person.photoDataUrl || "", alt: person.name});
-      const nameDiv = createElement("div", {className: "person-name", innerHTML: person.name});
-      const donorMark = person.donor ? createElement("span", {className: "donor-heart", innerHTML: "❤️"}) : null;
-
-      // Botones editar y eliminar
-      const editBtn = createElement("button", {innerHTML: "Editar"});
-      const deleteBtn = createElement("button", {innerHTML: "Eliminar", className: "delete-btn"});
-
-      // Contenedor acciones
-      const actions = createElement("div", {className: "person-actions"}, editBtn, deleteBtn);
-
-      const personItem = createElement("div", {className: "person-item"}, photo, nameDiv);
-      if (donorMark) personItem.appendChild(donorMark);
-      personItem.appendChild(actions);
-
-      // Eliminar persona
-      deleteBtn.onclick = () => {
-        if (confirm(`Eliminar persona "${person.name}" de ${country.name}?`)) {
-          data.countries[countryIndex].persons.splice(personIndex, 1);
-          saveData();
-          render();
-        }
-      };
-
-      // Editar persona
-      editBtn.onclick = () => {
-        const newName = prompt("Editar nombre:", person.name);
-        if (!newName) return alert("El nombre no puede estar vacío");
-        const donorConfirm = confirm("¿Es donador? (Aceptar = Sí, Cancelar = No)");
-        data.countries[countryIndex].persons[personIndex].name = newName.trim();
-        data.countries[countryIndex].persons[personIndex].donor = donorConfirm;
-        saveData();
-        render();
-      };
-
-      personList.appendChild(personItem);
-    });
-
-    col.appendChild(personList);
-
-    // Formulario para agregar persona
-    const addPersonForm = createElement("form", {className: "add-person-form"});
-
-    const inputName = createElement("input", {type: "text", placeholder: "Nombre persona", required: true});
-    const inputPhoto = createElement("input", {type: "file", accept: "image/*", required: true});
-    const inputDonor = createElement("label");
-    const inputDonorCheckbox = createElement("input", {type: "checkbox"});
-    inputDonor.appendChild(inputDonorCheckbox);
-    inputDonor.appendChild(document.createTextNode(" Donador"));
-
-    const submitBtn = createElement("button", {type: "submit", innerHTML: "Agregar"});
-
-    addPersonForm.appendChild(inputName);
-    addPersonForm.appendChild(inputPhoto);
-    addPersonForm.appendChild(inputDonor);
-    addPersonForm.appendChild(submitBtn);
-
-    addPersonForm.onsubmit = (e) => {
-      e.preventDefault();
-      const name = inputName.value.trim();
-      const donor = inputDonorCheckbox.checked;
-      const file = inputPhoto.files[0];
-      if (!name || !file) return alert("Por favor completa los campos");
-
-      // Leer imagen y guardar
-      const reader = new FileReader();
-      reader.onload = function(evt) {
-        data.countries[countryIndex].persons.push({
-          name,
-          photoDataUrl: evt.target.result,
-          donor
-        });
-        saveData();
-        render();
-      };
-      reader.readAsDataURL(file);
+    const del = document.createElement("button");
+    del.textContent = "🗑️";
+    del.onclick = () => {
+      countries[country].splice(index, 1);
+      renderPeople(country);
     };
 
-    col.appendChild(addPersonForm);
+    controls.appendChild(edit);
+    controls.appendChild(del);
 
-    countriesContainer.appendChild(col);
+    const wrapper = document.createElement("div");
+    wrapper.appendChild(name);
+    wrapper.innerHTML += donor;
+
+    card.appendChild(img);
+    card.appendChild(wrapper);
+    card.appendChild(controls);
+
+    list.appendChild(card);
   });
 }
 
-// Agregar país
-addCountryBtn.onclick = () => {
-  const name = countryNameInput.value.trim();
-  if (!name) return alert("Escribe el nombre del país");
-  const file = countryFlagInput.files[0];
-  if (!file) return alert("Selecciona una imagen para la bandera");
-
-  // Leer imagen bandera
-  const reader = new FileReader();
-  reader.onload = function(evt) {
-    data.countries.push({
-      name,
-      flagDataUrl: evt.target.result,
-      persons: []
-    });
-    saveData();
-    render();
-    countryNameInput.value = "";
-    countryFlagInput.value = "";
-  };
-  reader.readAsDataURL(file);
-};
-
-// Cargar datos y renderizar al inicio
-loadData();
-render();
+function editPerson(country, index) {
+  const current = countries[country][index];
+  const name = prompt("Nuevo nombre:", current.name);
+  if (!name) return;
+  const img = prompt("Nueva URL de imagen:", current.img);
+  if (!img) return;
+  const isDonor = confirm("¿Es donador?");
+  countries[country][index] = { name, img, isDonor };
+  countries[country].sort((a, b) => a.name.localeCompare(b.name));
+  renderPeople(country);
+}
