@@ -141,3 +141,12 @@ button:hover {
   color: red;
   font-size: 18px;
 }
+
+.persona span .donador {
+  background-color: purple;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 5px;
+  font-size: 0.9em;
+}
