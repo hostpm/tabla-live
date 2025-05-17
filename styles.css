@@ -96,15 +96,15 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  align-items: stretch;
   width: 100%;
   padding-bottom: 10px;
-  align-items: stretch;
+
+  /* Elimina cualquier scroll y deja que crezca con el contenido */
+  max-height: none;
+  overflow: visible;
 }
 
-.personas::-webkit-scrollbar-thumb {
-  background-color: #ce93d8;
-  border-radius: 4px;
-}
 .persona {
   background: #f0f0f0;
   border: 2px solid transparent;
