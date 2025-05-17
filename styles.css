@@ -46,13 +46,19 @@ button:hover {
 }
 
 .pais {
+  /* Mantén esto para la tabla */
   background: white;
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 10px;
-  width: 250px; /* Antes 200px, más ancho */
-  word-wrap: break-word; /* para que los textos largos hagan salto de línea */
+  width: 250px;
+  word-wrap: break-word;
   overflow-wrap: break-word;
+
+  /* Agrega para que alinee bien */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centra el contenido dentro del país */
 }
 
 .persona span {
@@ -92,7 +98,11 @@ button:hover {
   border-radius: 8px;
   background: #f9f9f9;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  width: 180px; /* ancho fijo para que la foto y nombre se alineen */
+
+  /* Cambia esta línea: */
+  width: 100%; /* para que ocupe todo el ancho del contenedor pais */
+  max-width: 230px; /* máximo ancho para que no crezca demasiado */
+  box-sizing: border-box; /* incluye padding dentro del ancho */
 }
 
 .persona img {
