@@ -61,6 +61,11 @@ function renderPersonas(nombrePais, contenedor) {
   paises[nombrePais].forEach(persona => {
     const div = document.createElement("div");
     div.className = "persona";
+    
+    if (persona.donador) {
+      div.classList.add("donador"); // 👉 Esto es lo que le pone el fondo morado
+    }
+
     div.innerHTML = `
       <img src="${persona.foto}" alt="${persona.nombre}" />
       <span>${persona.nombre} ${persona.donador ? '<span class="donador">❤️</span>' : ''}</span>
