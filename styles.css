@@ -66,11 +66,10 @@ button:hover {
 }
 
 .persona span {
-font-family: 'EleganciaRomantica', sans-serif;
-  display: block;
-  text-align: center;
+  font-family: 'EleganciaRomantica', sans-serif;
   font-weight: bold;
   word-break: break-word;
+  font-size: 1.1rem;
 }
 
 .pais-header {
@@ -115,21 +114,20 @@ font-family: 'EleganciaRomantica', sans-serif;
   border: 2px solid transparent;
   border-radius: 10px;
   padding: 10px;
-  margin-bottom: 10px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
-  width: 100%; /* ✅ Se adapta al ancho del contenedor padre (.personas) */
+  gap: 15px;
+  width: 100%;
+  text-align: left;
 }
 
 .persona img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
   object-fit: cover;
-  margin-bottom: 8px;
 }
+
 
 
 .persona.donador {
