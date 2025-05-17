@@ -1,91 +1,94 @@
 body {
-  font-family: sans-serif;
-  padding: 20px;
-  background-color: #f4f4f4;
-}
-
-h1 {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f9f9f9;
+  color: #333;
   text-align: center;
 }
 
-.add-country {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 20px;
+h1 {
+  background-color: #ffb6c1;
+  margin: 0;
+  padding: 1rem;
 }
 
-.add-country input {
+.form-container {
+  margin: 20px;
+}
+
+input[type="text"] {
   padding: 8px;
-  width: 200px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 button {
-  padding: 8px 12px;
+  padding: 8px 15px;
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.countries-container {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+button:hover {
+  background-color: #e655a1;
 }
 
-.country-column {
+.paises {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+.pais {
   background: white;
+  border: 1px solid #ddd;
   border-radius: 10px;
   padding: 10px;
-  min-width: 220px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  width: 200px;
 }
 
-.country-header {
+.pais-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.pais-header img {
+  width: 30px;
+  height: 20px;
+  object-fit: cover;
+}
+
+.personas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.persona {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 10px;
-  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding-top: 5px;
 }
 
-.country-header img {
-  width: 32px;
-  height: 20px;
-  border-radius: 4px;
-}
-
-.person-card {
-  display: flex;
-  align-items: center;
-  margin: 8px 0;
-  gap: 8px;
-}
-
-.person-card img {
-  width: 32px;
-  height: 32px;
+.persona img {
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
-.person-card .name {
-  font-weight: bold;
-}
-
-.person-card .donor {
-  background-color: gold;
-  color: black;
-  padding: 2px 6px;
-  font-size: 12px;
-  border-radius: 4px;
-  margin-left: 5px;
-}
-
-.controls {
-  margin-left: auto;
-  display: flex;
-  gap: 5px;
-}
-
-.controls button {
-  font-size: 12px;
+.donador {
+  color: red;
+  font-size: 18px;
 }
