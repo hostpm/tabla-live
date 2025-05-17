@@ -124,13 +124,17 @@ button:hover {
   overflow-wrap: break-word;
 }
 
-.persona .donador {
-  color: #e74c3c; /* rojo corazón */
+.persona.donador {
+  background: #f3e5f5; /* morado claro */
+  border: 2px solid #ce93d8;
+}
+/* Estilo del ícono de donador */
+.donador-icono {
+  color: #e74c3c; /* rojo */
   font-size: 20px;
   margin-left: 6px;
   vertical-align: middle;
 }
-
 .donador {
   color: red;
   font-size: 18px;
