@@ -1,166 +1,91 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  background: #f4f4f4;
-  color: #333;
+  font-family: sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
 }
 
-#add-country-section {
-  background: white;
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 30px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+.add-country {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-#add-country-section input[type="text"] {
-  width: 60%;
+.add-country input {
   padding: 8px;
-  margin-right: 10px;
-  font-size: 16px;
+  width: 200px;
 }
 
-#add-country-section input[type="file"] {
-  margin-right: 10px;
-}
-
-#add-country-btn {
-  padding: 8px 16px;
-  font-size: 16px;
+button {
+  padding: 8px 12px;
   cursor: pointer;
 }
 
-#countries-container {
+.countries-container {
   display: flex;
-  justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
-/* Cada país como columna vertical */
 .country-column {
   background: white;
+  border-radius: 10px;
   padding: 10px;
-  border-radius: 8px;
-  width: 220px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  min-width: 220px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
 .country-header {
-  text-align: center;
-  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  justify-content: space-between;
 }
 
 .country-header img {
-  width: 64px;
-  height: 42px;
-  object-fit: contain;
+  width: 32px;
+  height: 20px;
   border-radius: 4px;
-  margin-bottom: 6px;
-  border: 1px solid #ddd;
 }
 
-.person-list {
-  width: 100%;
-}
-
-.person-item {
+.person-card {
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
-  background: #e9f1ff;
-  padding: 6px 10px;
-  border-radius: 6px;
-  position: relative;
+  margin: 8px 0;
+  gap: 8px;
 }
 
-.person-photo {
-  width: 36px;
-  height: 36px;
+.person-card img {
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  object-fit: cover;
-  margin-right: 10px;
-  border: 1px solid #ccc;
 }
 
-.person-name {
-  flex-grow: 1;
-  font-weight: 600;
-  font-size: 14px;
+.person-card .name {
+  font-weight: bold;
 }
 
-.donor-heart {
-  color: red;
-  font-size: 16px;
-  margin-left: 6px;
-}
-
-/* Botones para editar/eliminar */
-.person-actions {
-  display: flex;
-  gap: 6px;
-  margin-left: 8px;
-}
-
-.person-actions button {
-  background: #007bff;
-  border: none;
-  color: white;
-  border-radius: 4px;
+.person-card .donor {
+  background-color: gold;
+  color: black;
   padding: 2px 6px;
-  cursor: pointer;
   font-size: 12px;
-}
-
-.person-actions button.delete-btn {
-  background: #dc3545;
-}
-
-.person-actions button:hover {
-  opacity: 0.85;
-}
-
-/* Formulario agregar persona */
-.add-person-form {
-  margin-top: 12px;
-  background: #f9f9f9;
-  padding: 8px;
-  border-radius: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.add-person-form input[type="text"],
-.add-person-form input[type="file"] {
-  font-size: 13px;
-}
-
-.add-person-form label {
-  font-size: 13px;
-}
-
-.add-person-form button {
-  align-self: flex-end;
-  background: #28a745;
-  color: white;
-  border: none;
-  padding: 6px 12px;
   border-radius: 4px;
-  cursor: pointer;
+  margin-left: 5px;
 }
 
-.add-person-form button:hover {
-  background: #218838;
+.controls {
+  margin-left: auto;
+  display: flex;
+  gap: 5px;
+}
+
+.controls button {
+  font-size: 12px;
 }
