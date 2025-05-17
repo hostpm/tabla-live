@@ -14,8 +14,12 @@ function agregarPais() {
 
   const encabezado = document.createElement("div");
   encabezado.className = "pais-header";
-  encabezado.innerHTML = `<img src="${url}" alt="${nombre}"><strong>${nombre}</strong>`;
-
+  encabezado.innerHTML = `
+    <img src="${url}" alt="${nombre}">
+    <strong>${nombre}</strong>
+    <span class="contador-personas">(0)</span>
+  `;
+  
   const personas = document.createElement("div");
   personas.className = "personas";
 
@@ -61,15 +65,15 @@ function renderPersonas(nombrePais, contenedor) {
   paises[nombrePais].forEach(persona => {
     const div = document.createElement("div");
     div.className = "persona";
-    
-    if (persona.donador) {
-      div.classList.add("donador"); // 👉 Esto es lo que le pone el fondo morado
-    }
-
     div.innerHTML = `
       <img src="${persona.foto}" alt="${persona.nombre}" />
       <span>${persona.nombre} ${persona.donador ? '<span class="donador">❤️</span>' : ''}</span>
     `;
     contenedor.appendChild(div);
   });
+  // Actualizar contador
+  const paisDiv = document.getElementById(`pais-${nombrePais}`);
+  const contador = paisDiv.querySelector(".contador-personas");
+  contador.textContent = `(${paises[nombrePais].length})`;
 }
+
